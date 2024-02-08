@@ -45,3 +45,21 @@ put:
       $ref: '../responses/NotFound.yaml'
     '422':
       $ref: "../responses/UnprocessableContent.yaml"
+delete:
+  summary: Delete place category
+  operationId: place.category.delete
+  description: Delete place category from the place category list.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeCategoryId.yaml'
+  tags:
+    - Place Category
+  security:
+    - bearer: []
+  responses:
+    '204':
+      $ref: '../responses/ResourceDeleted.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
