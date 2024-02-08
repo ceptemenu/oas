@@ -1,0 +1,18 @@
+post:
+  summary: Issue new token
+  operationId: auth.bearer
+  description: Issue new bearer token with user credentials.
+  tags:
+    - auth
+  requestBody:
+    description: 'User account credentials'
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/IssueTokenRequest.yaml"
+  responses:
+    '201':
+      $ref: "../responses/TokenCreated.yaml"
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"

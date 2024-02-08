@@ -1,0 +1,11 @@
+type: object
+properties:
+  device_name:
+    type: string
+  token:
+    type: string
+    format: password
+  abilities:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,5 @@
+description: Token created
+content:
+  application/json:
+    schema:
+      $ref : "../schemas/BearerToken.yaml"

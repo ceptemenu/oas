@@ -1,0 +1,23 @@
+title: 'Issue Token'
+description: 'Credentials for issue new token'
+required:
+  - email
+  - password
+  - device_name
+type: object
+properties:
+  email:
+    title: 'E-Mail Address'
+    description: 'User e-mail address'
+    type: string
+    format: email
+  password:
+    title: Password
+    description: 'User password'
+    type: string
+    format: password
+  device_name:
+    title: 'Device Name'
+    description: 'Device name'
+    type: string
+    format: device

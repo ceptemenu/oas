@@ -1,0 +1,31 @@
+openapi: "3.0.0"
+info:
+  version: 0.1.0
+  title: CepteMenu OAS
+  description: Open API Specification for Cepte Menu application.
+  license:
+    name: MIT
+  contact:
+    name: API Support
+    url: https://ceptemenu.app/support
+    email: support@ceptemenu.app
+servers:
+  - url: https://api.ceptemenu.app
+tags:
+  - name: auth
+paths:
+  /auth:
+    $ref: "./resources/auth.yaml"
+components:
+  schemas:
+    ValidationError:
+      $ref: "./schemas/ValidationError.yaml"
+    IssueTokenRequest:
+      $ref: "./schemas/IssueTokenRequest.yaml"
+    BearerToken:
+      $ref: "./schemas/BearerToken.yaml"
+  responses:
+    UnprocessableContent:
+      $ref: "./responses/UnprocessableContent.yaml"
+    TokenCreated:
+      $ref: "./responses/TokenCreated.yaml"
