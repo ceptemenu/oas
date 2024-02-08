@@ -2,3 +2,5 @@ name: keywords
 in: query
 description: Keyword list to filter places.
 required: false
+schema:
+  type: string

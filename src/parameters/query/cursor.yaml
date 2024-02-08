@@ -2,3 +2,5 @@ name: cursor
 in: query
 description: Cursor value to retrieve more place.
 required: false
+schema:
+  type: string
