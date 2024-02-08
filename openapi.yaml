@@ -138,6 +138,51 @@ paths:
                         type: string
                         nullable: true
                         example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+    post:
+      summary: Create Place
+      operationId: place.create
+      description: Create new place with given information.
+      tags:
+        - place
+      security:
+        - bearer:
+            - create:place
+      requestBody:
+        description: Place to add to the application.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceCreated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+  /places/{placeId}:
+    get:
+      summary: Get place detail
+      operationId: place.show
+      description: Get place information.
+      tags:
+        - place
+      security:
+        - {}
+        - bearer:
+            - read:place.detail
+      responses:
+        '200':
+          description: Place detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Place'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
     ValidationError:
@@ -281,11 +326,13 @@ components:
           description: Place phone number (null if no permission)
           type: string
           nullable: true
+          example: '+902122655252'
         address:
           title: Address
           description: Place address
           type: string
           nullable: true
+          example: Nispetiye Cad. Seher Yildizi Sok. No:15/A Etiler, Besiktas, Istanbul 34330 Türkiye
         is_active:
           title: Is Active
           description: Is this place active to list?
@@ -314,6 +361,8 @@ components:
       description: Unauthorized
     ResourceCreated:
       description: Resource created
+    NotFound:
+      description: Resource not found
   securitySchemes:
     bearer:
       type: http
