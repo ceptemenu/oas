@@ -44,3 +44,17 @@ put:
       $ref: '../responses/NotFound.yaml'
     '422':
       $ref: "../responses/UnprocessableContent.yaml"
+delete:
+  summary: Delete place
+  operationId: place.delete
+  description: Delete place from the application.
+  tags:
+    - place
+  security:
+    - bearer:
+        - "delete:place"
+  responses:
+    '204':
+      $ref: '../responses/ResourceDeleted.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'
