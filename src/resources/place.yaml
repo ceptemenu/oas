@@ -32,7 +32,7 @@ put:
   security:
     - bearer: []
   requestBody:
-    description: Place to add to the application.
+    description: Update place information in the application.
     content:
       application/json:
         schema:
