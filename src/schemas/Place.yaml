@@ -25,11 +25,13 @@ properties:
     description: 'Place phone number (null if no permission)'
     type: string
     nullable: true
+    example: '+902122655252'
   address:
     title: 'Address'
     description: 'Place address'
     type: string
     nullable: true
+    example: 'Nispetiye Cad. Seher Yildizi Sok. No:15/A Etiler, Besiktas, Istanbul 34330 Türkiye'
   is_active:
     title: 'Is Active'
     description: 'Is this place active to list?'
