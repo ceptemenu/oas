@@ -44,6 +44,8 @@ put:
   responses:
     '204':
       $ref: '../responses/ResourceUpdated.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
     '404':
       $ref: '../responses/NotFound.yaml'
     '422':
@@ -62,5 +64,7 @@ delete:
   responses:
     '204':
       $ref: '../responses/ResourceDeleted.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
     '404':
       $ref: '../responses/NotFound.yaml'
