@@ -1,0 +1,5 @@
+description: Account details retrieved
+content:
+  application/json:
+    schema:
+      $ref : "../schemas/User.yaml"

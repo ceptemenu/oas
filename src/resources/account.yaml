@@ -1,3 +1,16 @@
+get:
+  summary: Get user account detail
+  operationId: account.me
+  description: Get user account information for authenticated user.
+  tags:
+    - account
+  security:
+    - bearer: []
+  responses:
+    '200':
+      $ref: "../responses/AccountDetails.yaml"
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
 post:
   summary: Register new user account
   operationId: account.register

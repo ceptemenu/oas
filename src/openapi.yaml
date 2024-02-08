@@ -34,3 +34,8 @@ components:
       $ref: "./responses/UnprocessableContent.yaml"
     TokenCreated:
       $ref: "./responses/TokenCreated.yaml"
+  securitySchemes:
+    bearer:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
