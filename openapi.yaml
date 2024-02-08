@@ -13,6 +13,9 @@ servers:
   - url: https://api.ceptemenu.app
 tags:
   - name: auth
+    description: Authentication related endpoints
+  - name: account
+    description: Account related endpoints
 paths:
   /auth:
     post:
@@ -31,6 +34,25 @@ paths:
       responses:
         '201':
           $ref: '#/components/responses/TokenCreated'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+  /account:
+    post:
+      summary: Register new user account
+      operationId: account.register
+      description: Create new user account with given credentials and user account information.
+      tags:
+        - account
+      requestBody:
+        description: New user information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRegisterRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceCreated'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
 components:
@@ -93,6 +115,35 @@ components:
           type: array
           items:
             type: string
+    AccountRegisterRequest:
+      title: Account Register Request
+      description: Credentials and user information for register new user account
+      required:
+        - name
+        - email
+        - password
+        - password_confirmation
+      type: object
+      properties:
+        name:
+          title: User Name
+          description: Display name for the user account
+          type: string
+        email:
+          title: E-Mail Address
+          description: User e-mail address
+          type: string
+          format: email
+        password:
+          title: Password
+          description: User password
+          type: string
+          format: password
+        password_confirmation:
+          title: Password Confirmation
+          description: User password confirmation (should be equal with password field)
+          type: string
+          format: password
   responses:
     UnprocessableContent:
       description: Unprocessable Content
@@ -106,3 +157,5 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/IssueToken'
+    ResourceCreated:
+      description: Resource created
