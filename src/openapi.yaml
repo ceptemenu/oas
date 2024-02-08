@@ -18,6 +18,8 @@ tags:
     description: Account related endpoints
   - name: Place
     description: Place related endpoints
+  - name: Place Category
+    description: Place' category related endpoints
 paths:
   /auth:
     $ref: "./resources/auth.yaml"
@@ -29,6 +31,8 @@ paths:
     $ref: "./resources/place.yaml"
   /places/{placeId}/landing:
     $ref: "./resources/place_landing.yaml"
+  /places/{placeId}/categories:
+    $ref: "./resources/place_categories.yaml"
 components:
   schemas:
     ValidationError:

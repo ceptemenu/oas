@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    title: 'ID'
+    description: 'ID of the place category'
+    type: string
+    format: uuid
+    readOnly: true
+    nullable: false
+  name:
+    title: 'Place Category Name'
+    description: 'Display name for the place category entry'
+    type: string
+    nullable: false
+    example: 'Burgers'

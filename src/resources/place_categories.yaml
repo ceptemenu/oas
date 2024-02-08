@@ -1,0 +1,89 @@
+get:
+  summary: Place category list
+  operationId: place.category.index
+  description: Retrieve place category list.
+  tags:
+    - Place Category
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/query/perPage.yaml'
+    - $ref: '../parameters/query/cursor.yaml'
+    - $ref: '../parameters/query/keywords.yaml'
+  responses:
+    '200':
+      description: Place category list
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                minimum: 0
+                maximum: 100
+                uniqueItems: true
+                items:
+                  $ref: '../schemas/PlaceCategory.yaml'
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories"
+                  last:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  next:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+              meta:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    nullable: false
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories"
+                  per_page:
+                    type: integer
+                    example: 15
+                    nullable: false
+                  next_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+post:
+  summary: Create Place Category
+  operationId: place.category.create
+  description: Create new place category with given information.
+  tags:
+    - Place Category
+  security:
+    - bearer: []
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+  requestBody:
+    description: Place Category to add to the place categories.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/PlaceCategory.yaml'
+  responses:
+    '201':
+      $ref: "../responses/ResourceCreated.yaml"
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
