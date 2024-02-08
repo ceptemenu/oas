@@ -195,7 +195,7 @@ paths:
       security:
         - bearer: []
       requestBody:
-        description: Place to add to the application.
+        description: Update place information in the application.
         content:
           application/json:
             schema:
@@ -383,6 +383,72 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+  /places/{placeId}/categories/{placeCategoryId}:
+    get:
+      summary: Get place category detail
+      operationId: place.category.show
+      description: Get place category information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeCategoryId'
+      tags:
+        - Place Category
+      responses:
+        '200':
+          description: Place category detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PlaceCategory'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update place category
+      operationId: place.category.update
+      description: Update place category information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeCategoryId'
+      tags:
+        - Place Category
+      security:
+        - bearer: []
+      requestBody:
+        description: Place category to update with.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceCategory'
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceUpdated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+    delete:
+      summary: Delete place category
+      operationId: place.category.delete
+      description: Delete place category from the place category list.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeCategoryId'
+      tags:
+        - Place Category
+      security:
+        - bearer: []
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceDeleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
     ValidationError:
@@ -632,6 +698,14 @@ components:
       in: path
       required: true
       description: The ID of the place
+      schema:
+        type: string
+        format: uuid
+    placeCategoryId:
+      name: placeCategoryId
+      in: path
+      required: true
+      description: The ID of the place category
       schema:
         type: string
         format: uuid
