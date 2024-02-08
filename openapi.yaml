@@ -165,6 +165,8 @@ paths:
       summary: Get place detail
       operationId: place.show
       description: Get place information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
       tags:
         - place
       security:
@@ -181,6 +183,52 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/Place'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update place
+      operationId: place.update
+      description: Update place information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      tags:
+        - place
+      security:
+        - bearer:
+            - edit:place
+            - edit:placeAny
+            - edit:placeStatus
+      requestBody:
+        description: Place to add to the application.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceUpdated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+    delete:
+      summary: Delete place
+      operationId: place.delete
+      description: Delete place from the application.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      tags:
+        - place
+      security:
+        - bearer:
+            - delete:place
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceDeleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
 components:
@@ -363,6 +411,10 @@ components:
       description: Resource created
     NotFound:
       description: Resource not found
+    ResourceUpdated:
+      description: Resource updated
+    ResourceDeleted:
+      description: Resource deleted
   securitySchemes:
     bearer:
       type: http
@@ -384,3 +436,11 @@ components:
       in: query
       description: Keyword list to filter places.
       required: false
+    placeId:
+      name: placeId
+      in: path
+      required: true
+      description: The ID of the place
+      schema:
+        type: string
+        format: uuid
