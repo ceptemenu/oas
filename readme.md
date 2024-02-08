@@ -1,5 +1,9 @@
 # Cepte Menu OAS
 
+[API Documentation](https://ceptemenu.github.io/oas/) deployed to GitHub pages.
+
+---
+
 Install dependencies.
 
 ```shell
