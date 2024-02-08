@@ -8,8 +8,7 @@ get:
     - place
   security:
     - {}
-    - bearer:
-      - "read:place.detail"
+    - bearer: []
   responses:
     '200':
       description: 'Place detail'
@@ -31,10 +30,7 @@ put:
   tags:
     - place
   security:
-    - bearer:
-      - "edit:place"
-      - "edit:placeAny"
-      - "edit:placeStatus"
+    - bearer: []
   requestBody:
     description: Place to add to the application.
     content:
@@ -59,8 +55,7 @@ delete:
   tags:
     - place
   security:
-    - bearer:
-        - "delete:place"
+    - bearer: []
   responses:
     '204':
       $ref: '../responses/ResourceDeleted.yaml'

@@ -10,8 +10,7 @@ get:
     - $ref: '../parameters/query/keywords.yaml'
   security:
     - {}
-    - bearer:
-      - "read:place.detail"
+    - bearer: []
   responses:
     '200':
       description: Place list
@@ -72,8 +71,7 @@ post:
   tags:
     - place
   security:
-    - bearer:
-        - "create:place"
+    - bearer: []
   requestBody:
     description: Place to add to the application.
     content:
