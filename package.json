@@ -7,7 +7,8 @@
     "test": "bun run build && spectral lint _dist/openapi.yaml",
     "preview": "bun run build && redocly preview-docs _dist/openapi.yaml",
     "html": "bun run build && redocly build-docs _dist/openapi.yaml --output _dist/index.html",
-    "clean": "rm -r _dist"
+    "clean": "rm -r _dist",
+    "deploy": "./ci/deploy.sh"
   },
   "license": "MIT",
   "repository": {

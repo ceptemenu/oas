@@ -1,0 +1,19 @@
+name: Publish OpenAPI to Github Pages
+on:
+  push:
+    branches: [master]
+jobs:
+  gh-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - name: Build
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+          bun run ci
+      - name: Deploy
+        run: bun run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
