@@ -1,0 +1,7 @@
+name: placeCategoryId
+in: path
+required: true
+description: The ID of the place category
+schema:
+  type: string
+  format: uuid

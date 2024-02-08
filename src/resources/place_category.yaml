@@ -1,0 +1,21 @@
+get:
+  summary: Get place category detail
+  operationId: place.category.show
+  description: Get place category information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeCategoryId.yaml'
+  tags:
+    - Place Category
+  responses:
+    '200':
+      description: 'Place category detail'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../schemas/PlaceCategory.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'

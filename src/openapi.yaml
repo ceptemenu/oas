@@ -33,6 +33,8 @@ paths:
     $ref: "./resources/place_landing.yaml"
   /places/{placeId}/categories:
     $ref: "./resources/place_categories.yaml"
+  /places/{placeId}/categories/{placeCategoryId}:
+    $ref: "./resources/place_category.yaml"
 components:
   schemas:
     ValidationError:
