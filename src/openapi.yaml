@@ -27,6 +27,8 @@ paths:
     $ref: "./resources/places.yaml"
   /places/{placeId}:
     $ref: "./resources/place.yaml"
+  /places/{placeId}/landing:
+    $ref: "./resources/place_landing.yaml"
 components:
   schemas:
     ValidationError:

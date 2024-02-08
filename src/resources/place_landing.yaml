@@ -1,0 +1,20 @@
+get:
+  summary: Get place landing media
+  operationId: place.landing
+  description: Get place landing media object details.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+  tags:
+    - place
+  responses:
+    '200':
+      description: 'Place landing media detail'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../schemas/Media.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'
