@@ -2,6 +2,7 @@ type: object
 properties:
   device_name:
     type: string
+    example: 'MyPhone'
   token:
     type: string
     format: password

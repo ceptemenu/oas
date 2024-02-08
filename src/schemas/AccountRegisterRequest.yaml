@@ -11,6 +11,7 @@ properties:
     title: 'User Name'
     description: 'Display name for the user account'
     type: string
+    example: 'John Doe'
   email:
     title: 'E-Mail Address'
     description: 'User e-mail address'

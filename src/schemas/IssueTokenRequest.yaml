@@ -21,3 +21,4 @@ properties:
     description: 'Device name'
     type: string
     format: device
+    example: 'MyPhone'
