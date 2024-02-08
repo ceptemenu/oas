@@ -1,0 +1,67 @@
+get:
+  summary: Place list
+  operationId: place.index
+  description: Retrieve place list.
+  tags:
+    - place
+  parameters:
+    - $ref: '../parameters/query/perPage.yaml'
+    - $ref: '../parameters/query/cursor.yaml'
+    - $ref: '../parameters/query/keywords.yaml'
+  security:
+    - {}
+    - bearer:
+      - "read:place.detail"
+  responses:
+    '200':
+      description: Place list
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                minimum: 0
+                maximum: 100
+                uniqueItems: true
+                items:
+                  $ref: '../schemas/Place.yaml'
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places"
+                  last:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  next:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+              meta:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    nullable: false
+                    example: "https://api.ceptemenu.app/places"
+                  per_page:
+                    type: integer
+                    example: 15
+                    nullable: false
+                  next_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"

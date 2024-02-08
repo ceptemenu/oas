@@ -1,0 +1,37 @@
+type: object
+properties:
+  id:
+    title: 'ID'
+    description: 'ID of the place'
+    type: string
+    format: uuid
+    readOnly: true
+    nullable: false
+  name:
+    title: 'Place Name'
+    description: 'Display name for the place entry'
+    type: string
+    nullable: false
+    example: 'Gunaydin Steakhouse'
+  email:
+    title: 'E-Mail Address'
+    description: 'Place e-mail address (null if no permission)'
+    type: string
+    format: email
+    nullable: true
+    example: 'hello@gunaydinsteakhouse.tld'
+  phone:
+    title: 'Phone'
+    description: 'Place phone number (null if no permission)'
+    type: string
+    nullable: true
+  address:
+    title: 'Address'
+    description: 'Place address'
+    type: string
+    nullable: true
+  is_active:
+    title: 'Is Active'
+    description: 'Is this place active to list?'
+    type: boolean
+    default: true

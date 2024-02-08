@@ -16,11 +16,15 @@ tags:
     description: Authentication related endpoints
   - name: account
     description: Account related endpoints
+  - name: place
+    description: Place related endpoints
 paths:
   /auth:
     $ref: "./resources/auth.yaml"
   /account:
     $ref: "./resources/account.yaml"
+  /places:
+    $ref: "./resources/places.yaml"
 components:
   schemas:
     ValidationError:
