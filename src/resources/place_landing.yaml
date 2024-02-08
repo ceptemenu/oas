@@ -18,3 +18,22 @@ get:
                 $ref: '../schemas/Media.yaml'
     '404':
       $ref: '../responses/NotFound.yaml'
+post:
+  summary: Upload place landing media
+  operationId: place.landing.upload
+  description: Upload new landing media object to the place resource.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+  tags:
+    - place
+  requestBody:
+    content:
+      image/*:
+        schema:
+          type: string
+          format: binary
+  responses:
+    '204':
+      $ref: '../responses/ResourceCreated.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'
