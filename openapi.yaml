@@ -18,6 +18,8 @@ tags:
     description: Account related endpoints
   - name: Place
     description: Place related endpoints
+  - name: Place Category
+    description: Place' category related endpoints
 paths:
   /auth:
     post:
@@ -291,6 +293,96 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+  /places/{placeId}/categories:
+    get:
+      summary: Place category list
+      operationId: place.category.index
+      description: Retrieve place category list.
+      tags:
+        - Place Category
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/cursor'
+        - $ref: '#/components/parameters/keywords'
+      responses:
+        '200':
+          description: Place category list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    minimum: 0
+                    maximum: 100
+                    uniqueItems: true
+                    items:
+                      $ref: '#/components/schemas/PlaceCategory'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories
+                      last:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      prev:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      next:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                  meta:
+                    type: object
+                    properties:
+                      path:
+                        type: string
+                        nullable: false
+                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories
+                      per_page:
+                        type: integer
+                        example: 15
+                        nullable: false
+                      next_cursor:
+                        type: string
+                        nullable: true
+                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      prev_cursor:
+                        type: string
+                        nullable: true
+                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+    post:
+      summary: Create Place Category
+      operationId: place.category.create
+      description: Create new place category with given information.
+      tags:
+        - Place Category
+      security:
+        - bearer: []
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      requestBody:
+        description: Place Category to add to the place categories.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceCategory'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceCreated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
 components:
   schemas:
     ValidationError:
@@ -462,6 +554,22 @@ components:
           type: string
           nullable: false
           example: https://cdn.ceptemenu.app/storage/example.jpg
+    PlaceCategory:
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of the place category
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: false
+        name:
+          title: Place Category Name
+          description: Display name for the place category entry
+          type: string
+          nullable: false
+          example: Burgers
   responses:
     UnprocessableContent:
       description: Unprocessable Content
