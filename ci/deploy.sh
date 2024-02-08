@@ -2,7 +2,7 @@
 
 # Clone repository
 git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" --branch gh-pages --single-branch gh-pages
-cp -r _build/* gh-pages
+cp -r _dist/* gh-pages
 
 # Deploy to GitHub Pages
 cd gh-pages || exit
