@@ -1,0 +1,28 @@
+title: 'Account Register Request'
+description: 'Credentials and user information for register new user account'
+required:
+  - name
+  - email
+  - password
+  - password_confirmation
+type: object
+properties:
+  name:
+    title: 'User Name'
+    description: 'Display name for the user account'
+    type: string
+  email:
+    title: 'E-Mail Address'
+    description: 'User e-mail address'
+    type: string
+    format: email
+  password:
+    title: Password
+    description: 'User password'
+    type: string
+    format: password
+  password_confirmation:
+    title: Password Confirmation
+    description: 'User password confirmation (should be equal with password field)'
+    type: string
+    format: password

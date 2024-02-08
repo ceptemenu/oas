@@ -13,9 +13,13 @@ servers:
   - url: https://api.ceptemenu.app
 tags:
   - name: auth
+  - name: account
+    description: Account related endpoints
 paths:
   /auth:
     $ref: "./resources/auth.yaml"
+  /account:
+    $ref: "./resources/account.yaml"
 components:
   schemas:
     ValidationError:
