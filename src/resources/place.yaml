@@ -2,6 +2,8 @@ get:
   summary: Get place detail
   operationId: place.show
   description: Get place information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
   tags:
     - place
   security:
@@ -24,6 +26,8 @@ put:
   summary: Update place
   operationId: place.update
   description: Update place information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
   tags:
     - place
   security:
@@ -48,6 +52,8 @@ delete:
   summary: Delete place
   operationId: place.delete
   description: Delete place from the application.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
   tags:
     - place
   security:

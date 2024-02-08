@@ -1,0 +1,7 @@
+name: placeId
+in: path
+required: true
+description: The ID of the place
+schema:
+  type: string
+  format: uuid
