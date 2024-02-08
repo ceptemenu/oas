@@ -16,6 +16,8 @@ tags:
     description: Authentication related endpoints
   - name: account
     description: Account related endpoints
+  - name: place
+    description: Place related endpoints
 paths:
   /auth:
     post:
@@ -68,6 +70,74 @@ paths:
           $ref: '#/components/responses/ResourceCreated'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+  /places:
+    get:
+      summary: Place list
+      operationId: place.index
+      description: Retrieve place list.
+      tags:
+        - place
+      parameters:
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/cursor'
+        - $ref: '#/components/parameters/keywords'
+      security:
+        - {}
+        - bearer:
+            - read:place.detail
+      responses:
+        '200':
+          description: Place list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    minimum: 0
+                    maximum: 100
+                    uniqueItems: true
+                    items:
+                      $ref: '#/components/schemas/Place'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places
+                      last:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      prev:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      next:
+                        type: string
+                        nullable: true
+                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                  meta:
+                    type: object
+                    properties:
+                      path:
+                        type: string
+                        nullable: false
+                        example: https://api.ceptemenu.app/places
+                      per_page:
+                        type: integer
+                        example: 15
+                        nullable: false
+                      next_cursor:
+                        type: string
+                        nullable: true
+                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                      prev_cursor:
+                        type: string
+                        nullable: true
+                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
 components:
   schemas:
     ValidationError:
@@ -183,6 +253,44 @@ components:
           description: User password confirmation (should be equal with password field)
           type: string
           format: password
+    Place:
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of the place
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: false
+        name:
+          title: Place Name
+          description: Display name for the place entry
+          type: string
+          nullable: false
+          example: Gunaydin Steakhouse
+        email:
+          title: E-Mail Address
+          description: Place e-mail address (null if no permission)
+          type: string
+          format: email
+          nullable: true
+          example: hello@gunaydinsteakhouse.tld
+        phone:
+          title: Phone
+          description: Place phone number (null if no permission)
+          type: string
+          nullable: true
+        address:
+          title: Address
+          description: Place address
+          type: string
+          nullable: true
+        is_active:
+          title: Is Active
+          description: Is this place active to list?
+          type: boolean
+          default: true
   responses:
     UnprocessableContent:
       description: Unprocessable Content
@@ -211,3 +319,19 @@ components:
       type: http
       bearerFormat: JWT
       scheme: bearer
+  parameters:
+    perPage:
+      name: perPage
+      in: query
+      description: How many items to return at one time (max 100)
+      required: false
+    cursor:
+      name: cursor
+      in: query
+      description: Cursor value to retrieve more place.
+      required: false
+    keywords:
+      name: keywords
+      in: query
+      description: Keyword list to filter places.
+      required: false
