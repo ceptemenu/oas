@@ -12,11 +12,11 @@ info:
 servers:
   - url: https://api.ceptemenu.app
 tags:
-  - name: auth
+  - name: Auth
     description: Authentication related endpoints
-  - name: account
+  - name: Account
     description: Account related endpoints
-  - name: place
+  - name: Place
     description: Place related endpoints
 paths:
   /auth:
@@ -25,7 +25,7 @@ paths:
       operationId: auth.bearer
       description: Issue new bearer token with user credentials.
       tags:
-        - auth
+        - Auth
       requestBody:
         description: User account credentials
         required: true
@@ -44,7 +44,7 @@ paths:
       operationId: account.me
       description: Get user account information for authenticated user.
       tags:
-        - account
+        - Account
       security:
         - bearer: []
       responses:
@@ -57,7 +57,7 @@ paths:
       operationId: account.register
       description: Create new user account with given credentials and user account information.
       tags:
-        - account
+        - Account
       requestBody:
         description: New user information
         required: true
@@ -76,7 +76,7 @@ paths:
       operationId: place.index
       description: Retrieve place list.
       tags:
-        - place
+        - Place
       parameters:
         - $ref: '#/components/parameters/perPage'
         - $ref: '#/components/parameters/cursor'
@@ -142,7 +142,7 @@ paths:
       operationId: place.create
       description: Create new place with given information.
       tags:
-        - place
+        - Place
       security:
         - bearer: []
       requestBody:
@@ -166,7 +166,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       security:
         - {}
         - bearer: []
@@ -189,7 +189,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       security:
         - bearer: []
       requestBody:
@@ -214,7 +214,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       security:
         - bearer: []
       responses:
@@ -232,7 +232,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       responses:
         '200':
           description: Place landing media detail
@@ -252,7 +252,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       requestBody:
         content:
           image/png:
@@ -283,7 +283,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/placeId'
       tags:
-        - place
+        - Place
       responses:
         '204':
           $ref: '#/components/responses/ResourceCreated'
