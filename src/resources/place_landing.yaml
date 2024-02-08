@@ -35,8 +35,12 @@ post:
   responses:
     '204':
       $ref: '../responses/ResourceCreated.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
     '404':
       $ref: '../responses/NotFound.yaml'
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
 delete:
   summary: Delete place landing media
   operationId: place.landing.delete
