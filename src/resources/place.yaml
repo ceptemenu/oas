@@ -1,0 +1,22 @@
+get:
+  summary: Get place detail
+  operationId: place.show
+  description: Get place information.
+  tags:
+    - place
+  security:
+    - {}
+    - bearer:
+      - "read:place.detail"
+  responses:
+    '200':
+      description: 'Place detail'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../schemas/Place.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'
