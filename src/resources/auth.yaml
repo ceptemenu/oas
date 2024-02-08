@@ -3,7 +3,7 @@ post:
   operationId: auth.bearer
   description: Issue new bearer token with user credentials.
   tags:
-    - auth
+    - Auth
   requestBody:
     description: 'User account credentials'
     required: true

@@ -12,11 +12,11 @@ info:
 servers:
   - url: https://api.ceptemenu.app
 tags:
-  - name: auth
+  - name: Auth
     description: Authentication related endpoints
-  - name: account
+  - name: Account
     description: Account related endpoints
-  - name: place
+  - name: Place
     description: Place related endpoints
 paths:
   /auth:

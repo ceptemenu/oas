@@ -5,7 +5,7 @@ get:
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
   tags:
-    - place
+    - Place
   security:
     - {}
     - bearer: []
@@ -28,7 +28,7 @@ put:
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
   tags:
-    - place
+    - Place
   security:
     - bearer: []
   requestBody:
@@ -53,7 +53,7 @@ delete:
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
   tags:
-    - place
+    - Place
   security:
     - bearer: []
   responses:

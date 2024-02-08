@@ -3,7 +3,7 @@ get:
   operationId: place.index
   description: Retrieve place list.
   tags:
-    - place
+    - Place
   parameters:
     - $ref: '../parameters/query/perPage.yaml'
     - $ref: '../parameters/query/cursor.yaml'
@@ -69,7 +69,7 @@ post:
   operationId: place.create
   description: Create new place with given information.
   tags:
-    - place
+    - Place
   security:
     - bearer: []
   requestBody:

@@ -3,7 +3,7 @@ get:
   operationId: account.me
   description: Get user account information for authenticated user.
   tags:
-    - account
+    - Account
   security:
     - bearer: []
   responses:
@@ -16,7 +16,7 @@ post:
   operationId: account.register
   description: Create new user account with given credentials and user account information.
   tags:
-    - account
+    - Account
   requestBody:
     description: 'New user information'
     required: true
