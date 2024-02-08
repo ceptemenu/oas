@@ -37,3 +37,18 @@ post:
       $ref: '../responses/ResourceCreated.yaml'
     '404':
       $ref: '../responses/NotFound.yaml'
+delete:
+  summary: Delete place landing media
+  operationId: place.landing.delete
+  description: Delete landing media object of the place resource.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+  tags:
+    - place
+  responses:
+    '204':
+      $ref: '../responses/ResourceCreated.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
