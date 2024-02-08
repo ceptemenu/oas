@@ -22,8 +22,8 @@ components:
       $ref: "./schemas/ValidationError.yaml"
     IssueTokenRequest:
       $ref: "./schemas/IssueTokenRequest.yaml"
-    BearerToken:
-      $ref: "./schemas/BearerToken.yaml"
+    IssueToken:
+      $ref: "./schemas/IssueToken.yaml"
   responses:
     UnprocessableContent:
       $ref: "./responses/UnprocessableContent.yaml"
