@@ -19,3 +19,29 @@ get:
                 $ref: '../schemas/PlaceCategory.yaml'
     '404':
       $ref: '../responses/NotFound.yaml'
+put:
+  summary: Update place category
+  operationId: place.category.update
+  description: Update place category information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeCategoryId.yaml'
+  tags:
+    - Place Category
+  security:
+    - bearer: []
+  requestBody:
+    description: Place category to update with.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/PlaceCategory.yaml'
+  responses:
+    '204':
+      $ref: '../responses/ResourceUpdated.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
