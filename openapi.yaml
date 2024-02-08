@@ -83,8 +83,7 @@ paths:
         - $ref: '#/components/parameters/keywords'
       security:
         - {}
-        - bearer:
-            - read:place.detail
+        - bearer: []
       responses:
         '200':
           description: Place list
@@ -145,8 +144,7 @@ paths:
       tags:
         - place
       security:
-        - bearer:
-            - create:place
+        - bearer: []
       requestBody:
         description: Place to add to the application.
         content:
@@ -171,8 +169,7 @@ paths:
         - place
       security:
         - {}
-        - bearer:
-            - read:place.detail
+        - bearer: []
       responses:
         '200':
           description: Place detail
@@ -194,10 +191,7 @@ paths:
       tags:
         - place
       security:
-        - bearer:
-            - edit:place
-            - edit:placeAny
-            - edit:placeStatus
+        - bearer: []
       requestBody:
         description: Place to add to the application.
         content:
@@ -222,11 +216,77 @@ paths:
       tags:
         - place
       security:
-        - bearer:
-            - delete:place
+        - bearer: []
       responses:
         '204':
           $ref: '#/components/responses/ResourceDeleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /places/{placeId}/landing:
+    get:
+      summary: Get place landing media
+      operationId: place.landing
+      description: Get place landing media object details.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      tags:
+        - place
+      responses:
+        '200':
+          description: Place landing media detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Media'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      summary: Upload place landing media
+      operationId: place.landing.upload
+      description: Upload new landing media object to the place resource.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      tags:
+        - place
+      requestBody:
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/webp:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceCreated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+    delete:
+      summary: Delete place landing media
+      operationId: place.landing.delete
+      description: Delete landing media object of the place resource.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      tags:
+        - place
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceCreated'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -386,6 +446,22 @@ components:
           description: Is this place active to list?
           type: boolean
           default: true
+    Media:
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of the media object
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: false
+        url:
+          title: URL
+          description: URL for the media object
+          type: string
+          nullable: false
+          example: https://cdn.ceptemenu.app/storage/example.jpg
   responses:
     UnprocessableContent:
       description: Unprocessable Content
@@ -426,16 +502,23 @@ components:
       in: query
       description: How many items to return at one time (max 100)
       required: false
+      schema:
+        type: integer
+        minimum: 1
     cursor:
       name: cursor
       in: query
       description: Cursor value to retrieve more place.
       required: false
+      schema:
+        type: string
     keywords:
       name: keywords
       in: query
       description: Keyword list to filter places.
       required: false
+      schema:
+        type: string
     placeId:
       name: placeId
       in: path
