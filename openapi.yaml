@@ -37,6 +37,19 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableContent'
   /account:
+    get:
+      summary: Get user account detail
+      operationId: account.me
+      description: Get user account information for authenticated user.
+      tags:
+        - account
+      security:
+        - bearer: []
+      responses:
+        '200':
+          $ref: '#/components/responses/AccountDetails'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
     post:
       summary: Register new user account
       operationId: account.register
@@ -103,11 +116,13 @@ components:
           description: Device name
           type: string
           format: device
+          example: MyPhone
     IssueToken:
       type: object
       properties:
         device_name:
           type: string
+          example: MyPhone
         token:
           type: string
           format: password
@@ -115,6 +130,29 @@ components:
           type: array
           items:
             type: string
+    User:
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of the user account
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: false
+        name:
+          title: User Name
+          description: Display name for the user account
+          type: string
+          nullable: false
+          example: John Doe
+        email:
+          title: E-Mail Address
+          description: User e-mail address (null if no permission)
+          type: string
+          format: email
+          nullable: true
+          example: john@doe.tld
     AccountRegisterRequest:
       title: Account Register Request
       description: Credentials and user information for register new user account
@@ -129,6 +167,7 @@ components:
           title: User Name
           description: Display name for the user account
           type: string
+          example: John Doe
         email:
           title: E-Mail Address
           description: User e-mail address
@@ -157,5 +196,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/IssueToken'
+    AccountDetails:
+      description: Account details retrieved
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+    Unauthorized:
+      description: Unauthorized
     ResourceCreated:
       description: Resource created
+  securitySchemes:
+    bearer:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
