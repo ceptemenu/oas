@@ -20,3 +20,27 @@ get:
                 $ref: '../schemas/Place.yaml'
     '404':
       $ref: '../responses/NotFound.yaml'
+put:
+  summary: Update place
+  operationId: place.update
+  description: Update place information.
+  tags:
+    - place
+  security:
+    - bearer:
+      - "edit:place"
+      - "edit:placeAny"
+      - "edit:placeStatus"
+  requestBody:
+    description: Place to add to the application.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Place.yaml'
+  responses:
+    '204':
+      $ref: '../responses/ResourceUpdated.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
