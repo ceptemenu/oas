@@ -65,3 +65,25 @@ get:
                     type: string
                     nullable: true
                     example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+post:
+  summary: Create Place
+  operationId: place.create
+  description: Create new place with given information.
+  tags:
+    - place
+  security:
+    - bearer:
+        - "create:place"
+  requestBody:
+    description: Place to add to the application.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/Place.yaml'
+  responses:
+    '201':
+      $ref: "../responses/ResourceCreated.yaml"
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
