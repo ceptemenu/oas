@@ -19,3 +19,29 @@ get:
                 $ref: '../schemas/PlaceProduct.yaml'
     '404':
       $ref: '../responses/NotFound.yaml'
+put:
+  summary: Update place product
+  operationId: place.product.update
+  description: Update place product information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeProductId.yaml'
+  tags:
+    - Place Product
+  security:
+    - bearer: []
+  requestBody:
+    description: Place product to update with.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/PlaceProduct.yaml'
+  responses:
+    '204':
+      $ref: '../responses/ResourceUpdated.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
