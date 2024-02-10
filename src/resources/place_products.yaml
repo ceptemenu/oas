@@ -1,0 +1,66 @@
+get:
+  summary: Place product list
+  operationId: place.product.index
+  description: Retrieve place products.
+  tags:
+    - Place Product
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/query/perPage.yaml'
+    - $ref: '../parameters/query/cursor.yaml'
+    - $ref: '../parameters/query/keywords.yaml'
+  responses:
+    '200':
+      description: Place product list
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                minimum: 0
+                maximum: 100
+                uniqueItems: true
+                items:
+                  $ref: '../schemas/PlaceProduct.yaml'
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/products"
+                  last:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/products?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/products?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  next:
+                    type: string
+                    nullable: true
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/products?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+              meta:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    nullable: false
+                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/products"
+                  per_page:
+                    type: integer
+                    example: 15
+                    nullable: false
+                  next_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                  prev_cursor:
+                    type: string
+                    nullable: true
+                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+    '404':
+      $ref: '../responses/NotFound.yaml'

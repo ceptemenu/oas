@@ -20,6 +20,8 @@ tags:
     description: Place related endpoints
   - name: Place Category
     description: Place' category related endpoints
+  - name: Place Product
+    description: Place' product related endpoints
 paths:
   /auth:
     $ref: "./resources/auth.yaml"
@@ -35,6 +37,8 @@ paths:
     $ref: "./resources/place_categories.yaml"
   /places/{placeId}/categories/{placeCategoryId}:
     $ref: "./resources/place_category.yaml"
+  /places/{placeId}/products:
+    $ref: "./resources/place_products.yaml"
 components:
   schemas:
     ValidationError:
