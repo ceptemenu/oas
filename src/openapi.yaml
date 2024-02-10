@@ -39,6 +39,8 @@ paths:
     $ref: "./resources/place_category.yaml"
   /places/{placeId}/products:
     $ref: "./resources/place_products.yaml"
+  /places/{placeId}/products/{placeProductId}:
+    $ref: "./resources/place_product.yaml"
 components:
   schemas:
     ValidationError:

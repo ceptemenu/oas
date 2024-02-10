@@ -1,0 +1,21 @@
+get:
+  summary: Get place product detail
+  operationId: place.product.show
+  description: Get place product information.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeProductId.yaml'
+  tags:
+    - Place Product
+  responses:
+    '200':
+      description: 'Place product detail'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../schemas/PlaceProduct.yaml'
+    '404':
+      $ref: '../responses/NotFound.yaml'

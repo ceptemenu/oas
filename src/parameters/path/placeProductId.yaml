@@ -1,0 +1,7 @@
+name: placeProductId
+in: path
+required: true
+description: The ID of the place product
+schema:
+  type: string
+  format: uuid
