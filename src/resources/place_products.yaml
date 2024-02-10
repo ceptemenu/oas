@@ -64,3 +64,28 @@ get:
                     example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
     '404':
       $ref: '../responses/NotFound.yaml'
+post:
+  summary: Create Place Product
+  operationId: place.product.create
+  description: Create new place product with given information.
+  tags:
+    - Place Product
+  security:
+    - bearer: []
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+  requestBody:
+    description: Place Product to add to the place categories.
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/PlaceProduct.yaml'
+  responses:
+    '201':
+      $ref: "../responses/ResourceCreated.yaml"
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
+    '422':
+      $ref: "../responses/UnprocessableContent.yaml"
