@@ -62,6 +62,8 @@ get:
                     type: string
                     nullable: true
                     example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+    '404':
+      $ref: '../responses/NotFound.yaml'
 post:
   summary: Create Place Category
   operationId: place.category.create
