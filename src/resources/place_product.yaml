@@ -45,3 +45,21 @@ put:
       $ref: '../responses/NotFound.yaml'
     '422':
       $ref: "../responses/UnprocessableContent.yaml"
+delete:
+  summary: Delete place product
+  operationId: place.product.delete
+  description: Delete place product from the place product list.
+  parameters:
+    - $ref: '../parameters/path/placeId.yaml'
+    - $ref: '../parameters/path/placeProductId.yaml'
+  tags:
+    - Place Product
+  security:
+    - bearer: []
+  responses:
+    '204':
+      $ref: '../responses/ResourceDeleted.yaml'
+    '401':
+      $ref: "../responses/Unauthorized.yaml"
+    '404':
+      $ref: '../responses/NotFound.yaml'
