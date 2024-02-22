@@ -6,10 +6,8 @@ properties:
     type: string
     format: uuid
     readOnly: true
-    nullable: false
   name:
     title: 'Place Product Name'
     description: 'Display name for the place product entry'
     type: string
-    nullable: false
     example: "Chief' Burger"

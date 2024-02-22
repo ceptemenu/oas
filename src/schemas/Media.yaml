@@ -6,10 +6,8 @@ properties:
     type: string
     format: uuid
     readOnly: true
-    nullable: false
   url:
     title: 'URL'
     description: 'URL for the media object'
     type: string
-    nullable: false
     example: 'https://cdn.ceptemenu.app/storage/example.jpg'

@@ -6,17 +6,16 @@ properties:
     type: string
     format: uuid
     readOnly: true
-    nullable: false
   name:
     title: 'User Name'
     description: 'Display name for the user account'
     type: string
-    nullable: false
     example: 'John Doe'
   email:
     title: 'E-Mail Address'
     description: 'User e-mail address (null if no permission)'
-    type: string
+    type:
+      - string
+      - 'null'
     format: email
-    nullable: true
     example: 'john@doe.tld'

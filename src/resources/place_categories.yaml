@@ -28,40 +28,37 @@ get:
                 type: object
                 properties:
                   first:
-                    type: string
-                    nullable: true
-                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories"
+                    type:
+                      - string
+                      - 'null'
                   last:
-                    type: string
-                    nullable: true
-                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                    type:
+                      - string
+                      - 'null'
                   prev:
-                    type: string
-                    nullable: true
-                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                    type:
+                      - string
+                      - 'null'
                   next:
-                    type: string
-                    nullable: true
-                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                    type:
+                      - string
+                      - 'null'
               meta:
                 type: object
                 properties:
                   path:
                     type: string
-                    nullable: false
-                    example: "https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories"
                   per_page:
                     type: integer
                     example: 15
-                    nullable: false
                   next_cursor:
-                    type: string
-                    nullable: true
-                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                    type:
+                      - string
+                      - 'null'
                   prev_cursor:
-                    type: string
-                    nullable: true
-                    example: "eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9"
+                    type:
+                      - string
+                      - 'null'
     '404':
       $ref: '../responses/NotFound.yaml'
 post:
