@@ -1,10 +1,11 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   version: 0.1.0
   title: CepteMenu OAS
   description: Open API Specification for Cepte Menu application.
   license:
-    name: MIT
+    name: MIT License
+    identifier: MIT
   contact:
     name: API Support
     url: https://ceptemenu.app/support
@@ -20,6 +21,8 @@ tags:
     description: Place related endpoints
   - name: Place Category
     description: Place' category related endpoints
+  - name: Place Product
+    description: Place' product related endpoints
 paths:
   /auth:
     post:
@@ -105,40 +108,37 @@ paths:
                     type: object
                     properties:
                       first:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places
+                        type:
+                          - string
+                          - 'null'
                       last:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       prev:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       next:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                   meta:
                     type: object
                     properties:
                       path:
                         type: string
-                        nullable: false
-                        example: https://api.ceptemenu.app/places
                       per_page:
                         type: integer
                         example: 15
-                        nullable: false
                       next_cursor:
-                        type: string
-                        nullable: true
-                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       prev_cursor:
-                        type: string
-                        nullable: true
-                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
     post:
       summary: Create Place
       operationId: place.create
@@ -324,40 +324,39 @@ paths:
                     type: object
                     properties:
                       first:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories
+                        type:
+                          - string
+                          - 'null'
                       last:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       prev:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       next:
-                        type: string
-                        nullable: true
-                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories?cursor=eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                   meta:
                     type: object
                     properties:
                       path:
                         type: string
-                        nullable: false
-                        example: https://api.ceptemenu.app/places/497f6eca-6276-4993-bfeb-53cbbbba6f08/categories
                       per_page:
                         type: integer
                         example: 15
-                        nullable: false
                       next_cursor:
-                        type: string
-                        nullable: true
-                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
                       prev_cursor:
-                        type: string
-                        nullable: true
-                        example: eyJwbGFjZXMuaWQiOiJhZTQ4ZjFiYi04NTkwLTQ4NDktYjQwMi03ZGQ2YmIzYWQ0YWUiLCJfcG9pbnRzVG9OZXh0SXRlbXMiOnRydWV9
+                        type:
+                          - string
+                          - 'null'
+        '404':
+          $ref: '#/components/responses/NotFound'
     post:
       summary: Create Place Category
       operationId: place.category.create
@@ -449,6 +448,161 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+  /places/{placeId}/products:
+    get:
+      summary: Place product list
+      operationId: place.product.index
+      description: Retrieve place products.
+      tags:
+        - Place Product
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/cursor'
+        - $ref: '#/components/parameters/keywords'
+      responses:
+        '200':
+          description: Place product list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    minimum: 0
+                    maximum: 100
+                    uniqueItems: true
+                    items:
+                      $ref: '#/components/schemas/PlaceProduct'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type:
+                          - string
+                          - 'null'
+                      last:
+                        type:
+                          - string
+                          - 'null'
+                      prev:
+                        type:
+                          - string
+                          - 'null'
+                      next:
+                        type:
+                          - string
+                          - 'null'
+                  meta:
+                    type: object
+                    properties:
+                      path:
+                        type: string
+                      per_page:
+                        type: integer
+                        example: 15
+                      next_cursor:
+                        type:
+                          - string
+                          - 'null'
+                      prev_cursor:
+                        type:
+                          - string
+                          - 'null'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      summary: Create Place Product
+      operationId: place.product.create
+      description: Create new place product with given information.
+      tags:
+        - Place Product
+      security:
+        - bearer: []
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+      requestBody:
+        description: Place Product to add to the place categories.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceProduct'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceCreated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+  /places/{placeId}/products/{placeProductId}:
+    get:
+      summary: Get place product detail
+      operationId: place.product.show
+      description: Get place product information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeProductId'
+      tags:
+        - Place Product
+      responses:
+        '200':
+          description: Place product detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PlaceProduct'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update place product
+      operationId: place.product.update
+      description: Update place product information.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeProductId'
+      tags:
+        - Place Product
+      security:
+        - bearer: []
+      requestBody:
+        description: Place product to update with.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceProduct'
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceUpdated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+    delete:
+      summary: Delete place product
+      operationId: place.product.delete
+      description: Delete place product from the place product list.
+      parameters:
+        - $ref: '#/components/parameters/placeId'
+        - $ref: '#/components/parameters/placeProductId'
+      tags:
+        - Place Product
+      security:
+        - bearer: []
+      responses:
+        '204':
+          $ref: '#/components/responses/ResourceDeleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
     ValidationError:
@@ -520,19 +674,18 @@ components:
           type: string
           format: uuid
           readOnly: true
-          nullable: false
         name:
           title: User Name
           description: Display name for the user account
           type: string
-          nullable: false
           example: John Doe
         email:
           title: E-Mail Address
           description: User e-mail address (null if no permission)
-          type: string
+          type:
+            - string
+            - 'null'
           format: email
-          nullable: true
           example: john@doe.tld
     AccountRegisterRequest:
       title: Account Register Request
@@ -573,31 +726,32 @@ components:
           type: string
           format: uuid
           readOnly: true
-          nullable: false
         name:
           title: Place Name
           description: Display name for the place entry
           type: string
-          nullable: false
           example: Gunaydin Steakhouse
         email:
           title: E-Mail Address
           description: Place e-mail address (null if no permission)
-          type: string
+          type:
+            - string
+            - 'null'
           format: email
-          nullable: true
           example: hello@gunaydinsteakhouse.tld
         phone:
           title: Phone
           description: Place phone number (null if no permission)
-          type: string
-          nullable: true
+          type:
+            - string
+            - 'null'
           example: '+902122655252'
         address:
           title: Address
           description: Place address
-          type: string
-          nullable: true
+          type:
+            - string
+            - 'null'
           example: Nispetiye Cad. Seher Yildizi Sok. No:15/A Etiler, Besiktas, Istanbul 34330 Türkiye
         is_active:
           title: Is Active
@@ -613,12 +767,10 @@ components:
           type: string
           format: uuid
           readOnly: true
-          nullable: false
         url:
           title: URL
           description: URL for the media object
           type: string
-          nullable: false
           example: https://cdn.ceptemenu.app/storage/example.jpg
     PlaceCategory:
       type: object
@@ -629,13 +781,25 @@ components:
           type: string
           format: uuid
           readOnly: true
-          nullable: false
         name:
           title: Place Category Name
           description: Display name for the place category entry
           type: string
-          nullable: false
           example: Burgers
+    PlaceProduct:
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of the place product
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          title: Place Product Name
+          description: Display name for the place product entry
+          type: string
+          example: Chief' Burger
   responses:
     UnprocessableContent:
       description: Unprocessable Content
@@ -706,6 +870,14 @@ components:
       in: path
       required: true
       description: The ID of the place category
+      schema:
+        type: string
+        format: uuid
+    placeProductId:
+      name: placeProductId
+      in: path
+      required: true
+      description: The ID of the place product
       schema:
         type: string
         format: uuid
