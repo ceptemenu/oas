@@ -10,4 +10,5 @@ properties:
     title: 'Place Product Name'
     description: 'Display name for the place product entry'
     type: string
-    example: "Chief' Burger"
+    examples:
+      - "Chief' Burger"

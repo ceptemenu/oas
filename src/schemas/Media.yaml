@@ -10,4 +10,5 @@ properties:
     title: 'URL'
     description: 'URL for the media object'
     type: string
-    example: 'https://cdn.ceptemenu.app/storage/example.jpg'
+    examples:
+      - 'https://cdn.ceptemenu.app/storage/example.jpg'

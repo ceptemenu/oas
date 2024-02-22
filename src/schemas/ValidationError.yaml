@@ -5,7 +5,8 @@ required:
 properties:
   message:
     type: string
-    example: 'The given data was invalid.'
+    examples:
+      - The given data was invalid.
   errors:
     type: object
     properties:
@@ -13,9 +14,11 @@ properties:
         type: array
         items:
           type: string
-          example: 'Error message 1'
+          examples:
+            - Error message 1
       'key 2':
         type: array
         items:
           type: string
-          example: 'Error message 2'
+          examples:
+            - Error message 2

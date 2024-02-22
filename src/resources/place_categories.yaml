@@ -50,7 +50,8 @@ get:
                     type: string
                   per_page:
                     type: integer
-                    example: 15
+                    examples:
+                      - 15
                   next_cursor:
                     type:
                       - string

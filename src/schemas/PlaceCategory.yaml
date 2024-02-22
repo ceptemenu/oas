@@ -10,4 +10,5 @@ properties:
     title: 'Place Category Name'
     description: 'Display name for the place category entry'
     type: string
-    example: 'Burgers'
+    examples:
+      - Burgers

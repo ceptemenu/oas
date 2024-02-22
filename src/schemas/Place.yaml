@@ -10,7 +10,8 @@ properties:
     title: 'Place Name'
     description: 'Display name for the place entry'
     type: string
-    example: 'Gunaydin Steakhouse'
+    examples:
+      - Gunaydin Steakhouse
   email:
     title: 'E-Mail Address'
     description: 'Place e-mail address (null if no permission)'
@@ -18,21 +19,24 @@ properties:
       - string
       - 'null'
     format: email
-    example: 'hello@gunaydinsteakhouse.tld'
+    examples:
+      - 'hello@gunaydinsteakhouse.tld'
   phone:
     title: 'Phone'
     description: 'Place phone number (null if no permission)'
     type:
       - string
       - 'null'
-    example: '+902122655252'
+    examples:
+      - '+902122655252'
   address:
     title: 'Address'
     description: 'Place address'
     type:
       - string
       - 'null'
-    example: 'Nispetiye Cad. Seher Yildizi Sok. No:15/A Etiler, Besiktas, Istanbul 34330 Türkiye'
+    examples:
+      - 'Nispetiye Cad. Seher Yildizi Sok. No:15/A Etiler, Besiktas, Istanbul 34330 Türkiye'
   is_active:
     title: 'Is Active'
     description: 'Is this place active to list?'
