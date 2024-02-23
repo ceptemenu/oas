@@ -6,7 +6,6 @@ info:
   license:
     name: MIT License
     identifier: MIT
-    url: https://mit-license.org/
   contact:
     name: API Support
     url: https://ceptemenu.app/support
@@ -32,6 +31,7 @@ paths:
       description: Issue new bearer token with user credentials.
       tags:
         - Auth
+      security: []
       requestBody:
         description: User account credentials
         required: true
@@ -64,6 +64,7 @@ paths:
       description: Create new user account with given credentials and user account information.
       tags:
         - Account
+      security: []
       requestBody:
         description: New user information
         required: true
@@ -237,6 +238,7 @@ paths:
         - $ref: '#/components/parameters/placeId'
       tags:
         - Place
+      security: []
       responses:
         '200':
           description: Place landing media detail
@@ -257,6 +259,7 @@ paths:
         - $ref: '#/components/parameters/placeId'
       tags:
         - Place
+      security: []
       requestBody:
         content:
           image/png:
@@ -286,6 +289,7 @@ paths:
       description: Delete landing media object of the place resource.
       parameters:
         - $ref: '#/components/parameters/placeId'
+      security: []
       tags:
         - Place
       responses:
@@ -302,6 +306,7 @@ paths:
       description: Retrieve place category list.
       tags:
         - Place Category
+      security: []
       parameters:
         - $ref: '#/components/parameters/placeId'
         - $ref: '#/components/parameters/perPage'
@@ -395,6 +400,7 @@ paths:
         - $ref: '#/components/parameters/placeCategoryId'
       tags:
         - Place Category
+      security: []
       responses:
         '200':
           description: Place category detail
@@ -458,6 +464,7 @@ paths:
       description: Retrieve place products.
       tags:
         - Place Product
+      security: []
       parameters:
         - $ref: '#/components/parameters/placeId'
         - $ref: '#/components/parameters/perPage'
@@ -551,6 +558,7 @@ paths:
         - $ref: '#/components/parameters/placeProductId'
       tags:
         - Place Product
+      security: []
       responses:
         '200':
           description: Place product detail
@@ -608,32 +616,12 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  securitySchemes:
+    bearer:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
   schemas:
-    ValidationError:
-      type: object
-      required:
-        - message
-        - errors
-      properties:
-        message:
-          type: string
-          examples:
-            - The given data was invalid.
-        errors:
-          type: object
-          properties:
-            key 1:
-              type: array
-              items:
-                type: string
-                examples:
-                  - Error message 1
-            key 2:
-              type: array
-              items:
-                type: string
-                examples:
-                  - Error message 2
     IssueTokenRequest:
       title: Issue Token
       description: Credentials for issue new token
@@ -674,6 +662,31 @@ components:
           type: array
           items:
             type: string
+    ValidationError:
+      type: object
+      required:
+        - message
+        - errors
+      properties:
+        message:
+          type: string
+          examples:
+            - The given data was invalid.
+        errors:
+          type: object
+          properties:
+            key 1:
+              type: array
+              items:
+                type: string
+                examples:
+                  - Error message 1
+            key 2:
+              type: array
+              items:
+                type: string
+                examples:
+                  - Error message 2
     User:
       type: object
       properties:
@@ -820,18 +833,18 @@ components:
           examples:
             - Chief' Burger
   responses:
-    UnprocessableContent:
-      description: Unprocessable Content
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ValidationError'
     TokenCreated:
       description: Token created
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/IssueToken'
+    UnprocessableContent:
+      description: Unprocessable Content
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationError'
     AccountDetails:
       description: Account details retrieved
       content:
@@ -848,11 +861,6 @@ components:
       description: Resource updated
     ResourceDeleted:
       description: Resource deleted
-  securitySchemes:
-    bearer:
-      type: http
-      bearerFormat: JWT
-      scheme: bearer
   parameters:
     perPage:
       name: perPage
