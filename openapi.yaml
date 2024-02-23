@@ -6,6 +6,7 @@ info:
   license:
     name: MIT License
     identifier: MIT
+    url: https://mit-license.org/
   contact:
     name: API Support
     url: https://ceptemenu.app/support
