@@ -1,0 +1,24 @@
+extends: 
+  - recommended
+
+apis:
+  public@v1:
+    root: src/openapi.yaml
+
+rules:
+  operation-4xx-response: off
+  info-license-url: off
+
+theme:
+  openapi:
+    theme:
+      colors:
+        primary:
+          main: "#32329f"
+    generateCodeSamples:
+      languages:
+        - lang: curl
+        - lang: Node.js
+        - lang: JavaScript
+        - lang: PHP
+        - lang: Python

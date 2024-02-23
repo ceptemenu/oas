@@ -4,6 +4,7 @@ get:
   description: Retrieve place products.
   tags:
     - Place Product
+  security: []
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
     - $ref: '../parameters/query/perPage.yaml'

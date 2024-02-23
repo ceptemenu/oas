@@ -4,6 +4,7 @@ get:
   description: Retrieve place category list.
   tags:
     - Place Category
+  security: []
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
     - $ref: '../parameters/query/perPage.yaml'

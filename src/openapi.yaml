@@ -6,7 +6,6 @@ info:
   license:
     name: MIT License
     identifier: MIT
-    url: https://mit-license.org/
   contact:
     name: API Support
     url: https://ceptemenu.app/support
@@ -44,18 +43,6 @@ paths:
   /places/{placeId}/products/{placeProductId}:
     $ref: "./resources/place_product.yaml"
 components:
-  schemas:
-    ValidationError:
-      $ref: "./schemas/ValidationError.yaml"
-    IssueTokenRequest:
-      $ref: "./schemas/IssueTokenRequest.yaml"
-    IssueToken:
-      $ref: "./schemas/IssueToken.yaml"
-  responses:
-    UnprocessableContent:
-      $ref: "./responses/UnprocessableContent.yaml"
-    TokenCreated:
-      $ref: "./responses/TokenCreated.yaml"
   securitySchemes:
     bearer:
       type: http

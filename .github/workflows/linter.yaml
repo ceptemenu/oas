@@ -8,10 +8,10 @@ on:
       - main
 jobs:
   build:
-    name: Run Spectral
+    name: Run Redocly
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: stoplightio/spectral-action@v0.8.11
+      - uses: fluximus-prime/redocly-cli-github-action@v1.0.2
         with:
-          file_glob: 'openapi.yaml'
+          args: 'lint'

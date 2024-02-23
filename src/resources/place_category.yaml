@@ -7,6 +7,7 @@ get:
     - $ref: '../parameters/path/placeCategoryId.yaml'
   tags:
     - Place Category
+  security: []
   responses:
     '200':
       description: 'Place category detail'

@@ -4,7 +4,7 @@
   "description": "Open API Specification for Cepte Menu application.",
   "scripts": {
     "build": "redocly bundle src/openapi.yaml --output _dist/openapi.yaml",
-    "test": "bun run build && spectral lint _dist/openapi.yaml",
+    "test": "bun run build && redocly lint _dist/openapi.yaml",
     "preview": "bun run build && redocly preview-docs _dist/openapi.yaml",
     "html": "bun run build && redocly build-docs _dist/openapi.yaml --output _dist/index.html",
     "clean": "rm -r _dist",

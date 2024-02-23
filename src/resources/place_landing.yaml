@@ -6,6 +6,7 @@ get:
     - $ref: '../parameters/path/placeId.yaml'
   tags:
     - Place
+  security: []
   responses:
     '200':
       description: 'Place landing media detail'
@@ -26,6 +27,7 @@ post:
     - $ref: '../parameters/path/placeId.yaml'
   tags:
     - Place
+  security: []
   requestBody:
     content:
       'image/png':
@@ -55,6 +57,7 @@ delete:
   description: Delete landing media object of the place resource.
   parameters:
     - $ref: '../parameters/path/placeId.yaml'
+  security: []
   tags:
     - Place
   responses:

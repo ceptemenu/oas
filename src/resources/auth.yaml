@@ -4,6 +4,7 @@ post:
   description: Issue new bearer token with user credentials.
   tags:
     - Auth
+  security: []
   requestBody:
     description: 'User account credentials'
     required: true

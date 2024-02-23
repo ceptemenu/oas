@@ -17,6 +17,7 @@ post:
   description: Create new user account with given credentials and user account information.
   tags:
     - Account
+  security: []
   requestBody:
     description: 'New user information'
     required: true
