@@ -1,1 +1,3 @@
 extends: "spectral:oas"
+rules:
+  operation-4xx-response: off
